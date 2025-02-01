@@ -1,0 +1,70 @@
+/* sorteo-frontend/src/components/PremioManager.css */
+
+.premio-manager-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.premio-manager-section {
+    margin-bottom: 20px;
+}
+
+.premio-manager-section h3 {
+    margin-bottom: 10px;
+}
+
+.premio-manager-section input {
+    padding: 8px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+.premio-manager-section button {
+    padding: 8px 12px;
+    margin-right: 5px;
+}
+
+.premio-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.premio-table th,
+.premio-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.premio-table th {
+    background-color: #f2f2f2;
+}
+
+.eliminar-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.eliminar-btn:hover {
+    background-color: #c82333;
+}
+
+.cancelar-btn {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+
+.cancelar-btn:hover {
+    background-color: #5a6268;
+}

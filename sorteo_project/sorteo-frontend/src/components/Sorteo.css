@@ -1,0 +1,74 @@
+/* sorteo-frontend/src/components/Sorteo.css */
+
+.sorteo-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.sorteo-section {
+    margin-bottom: 15px;
+}
+
+.sorteo-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.sorteo-section input,
+.sorteo-section select {
+    padding: 8px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.sortear-btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sortear-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.sorteo-list {
+    list-style: none;
+    padding: 0;
+}
+
+.sorteo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.eliminar-btn {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.eliminar-btn:hover {
+    background-color: #c82333;
+}
+
+.sorteo-result {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    background-color: #e9ffe9;
+}

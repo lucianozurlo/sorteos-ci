@@ -1,0 +1,48 @@
+/* sorteo-frontend/src/components/UploadCSV.css */
+
+.upload-csv-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.dropzone {
+    border: 2px dashed #cccccc;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    color: #cccccc;
+    transition: border-color 0.3s, background-color 0.3s;
+    margin-bottom: 20px;
+}
+
+.dropzone.active {
+    border-color: #007bff;
+    background-color: #f0f8ff;
+    color: #333333;
+}
+
+.upload-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.mensaje {
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+}
