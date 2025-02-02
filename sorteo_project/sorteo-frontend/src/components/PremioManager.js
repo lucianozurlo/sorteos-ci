@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import ClipLoader from 'react-spinners/ClipLoader';
-import './PremioManager.css'; // Asegúrate de tener estilos adecuados
+import './PremioManager.css';
 
 function PremioManager() {
   const [premios, setPremios] = useState([]);
@@ -14,7 +14,6 @@ function PremioManager() {
   const [editStock, setEditStock] = useState(1);
   const [cargando, setCargando] = useState(false);
 
-  // Fetch premios
   const fetchPremios = async () => {
     setCargando(true);
     try {
@@ -36,18 +35,15 @@ function PremioManager() {
     fetchPremios();
   }, []);
 
-  // Agregar premio
   const agregarPremio = async () => {
     if (!nuevoNombre.trim()) {
       toast.error('Por favor, ingresa un nombre para el premio.');
       return;
     }
-
     if (nuevoStock < 1) {
       toast.error('El stock debe ser al menos 1.');
       return;
     }
-
     try {
       const response = await fetch('/api/premios/', {
         method: 'POST',
@@ -70,7 +66,6 @@ function PremioManager() {
     }
   };
 
-  // Editar premio
   const iniciarEdicion = (premio) => {
     setEditPremioId(premio.id);
     setEditNombre(premio.nombre);
@@ -88,12 +83,10 @@ function PremioManager() {
       toast.error('Por favor, ingresa un nombre para el premio.');
       return;
     }
-
     if (editStock < 0) {
       toast.error('El stock no puede ser negativo.');
       return;
     }
-
     try {
       const response = await fetch(`/api/premios/${editPremioId}/`, {
         method: 'PUT',
@@ -115,12 +108,10 @@ function PremioManager() {
     }
   };
 
-  // Eliminar premio
   const eliminarPremio = async (id) => {
     if (!window.confirm('¿Estás seguro de eliminar este premio?')) {
       return;
     }
-
     try {
       const response = await fetch(`/api/premios/${id}/`, {
         method: 'DELETE',
@@ -141,8 +132,6 @@ function PremioManager() {
   return (
     <div className="premio-manager-container">
       <h2>Gestor de Premios</h2>
-
-      {/* Agregar Nuevo Premio */}
       <div className="premio-manager-section">
         <h3>Agregar Nuevo Premio</h3>
         <input
@@ -160,10 +149,7 @@ function PremioManager() {
         />
         <button onClick={agregarPremio}>Agregar Premio</button>
       </div>
-
       <hr />
-
-      {/* Lista de Premios */}
       <div className="premio-manager-section">
         <h3>Lista de Premios</h3>
         {cargando ? (

@@ -4,7 +4,7 @@ import React, {useCallback, useState} from 'react';
 import {useDropzone} from 'react-dropzone';
 import {toast} from 'react-toastify';
 import ClipLoader from 'react-spinners/ClipLoader';
-import './UploadCSV.css'; // Asegúrate de crear este archivo para estilos
+import './UploadCSV.css';
 
 function UploadCSV () {
   const [filesUsuarios, setFilesUsuarios] = useState (null);
@@ -41,7 +41,6 @@ function UploadCSV () {
     getInputProps: getInputPropsUsuarios,
     isDragActive: isDragActiveUsuarios,
   } = useDropzone ({onDrop: onDropUsuarios, accept: {'text/csv': ['.csv']}});
-
   const {
     getRootProps: getRootPropsListaNegra,
     getInputProps: getInputPropsListaNegra,
@@ -55,16 +54,12 @@ function UploadCSV () {
       );
       return;
     }
-
     setCargando (true);
     setMensaje ('');
     toast.info ('Subiendo archivos CSV...');
-
-    // Preparar datos para enviar al backend Django
     const formData = new FormData ();
     formData.append ('usuarios', filesUsuarios);
     formData.append ('lista_negra', filesListaNegra);
-
     try {
       const response = await fetch ('http://localhost:8000/api/upload_csv/', {
         method: 'POST',
@@ -95,8 +90,6 @@ function UploadCSV () {
   return (
     <div className="upload-csv-container">
       <h2>Subir Archivos CSV</h2>
-
-      {/* Dropzone para Usuarios */}
       <div
         {...getRootPropsUsuarios ()}
         className={`dropzone ${isDragActiveUsuarios ? 'active' : ''}`}
@@ -106,8 +99,6 @@ function UploadCSV () {
           ? <p>{filesUsuarios.name}</p>
           : <p>Arrastra aquí el CSV de usuarios o haz clic para seleccionar</p>}
       </div>
-
-      {/* Dropzone para Lista Negra */}
       <div
         {...getRootPropsListaNegra ()}
         className={`dropzone ${isDragActiveListaNegra ? 'active' : ''}`}
@@ -119,8 +110,6 @@ function UploadCSV () {
               Arrastra aquí el CSV de lista negra o haz clic para seleccionar
             </p>}
       </div>
-
-      {/* Botón para Subir Archivos */}
       <button
         onClick={handleUpload}
         className="upload-button"
@@ -128,8 +117,6 @@ function UploadCSV () {
       >
         {cargando ? <ClipLoader size={20} color="#ffffff" /> : 'Subir CSV'}
       </button>
-
-      {/* Mensaje de Resultado */}
       {mensaje && <p className="mensaje">{mensaje}</p>}
     </div>
   );

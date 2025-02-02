@@ -1,0 +1,69 @@
+# ============================
+# Archivos y directorios de Python
+# ============================
+*.py[cod]
+*.$py.class
+__pycache__/
+*.so
+*.egg
+*.egg-info/
+.eggs/
+dist/
+build/
+*.log
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ============================
+# Archivos específicos de Django
+# ============================
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+local_settings.py
+.env
+.env.*
+
+# ============================
+# Archivos y directorios de entornos virtuales
+# ============================
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# ============================
+# Archivos y directorios de IDEs y editores
+# ============================
+# PyCharm
+.idea/
+
+# VSCode
+.vscode/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# ============================
+# Archivos y directorios de Node / React
+# ============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+build/
+dist/
+*.tgz
+
+# ============================
+# Otros directorios y archivos de cache / testing
+# ============================
+coverage/
+*.coverage
+.tox/
+.cache/
+*.swp

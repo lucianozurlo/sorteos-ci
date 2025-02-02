@@ -1,9 +1,7 @@
-// sorteo-frontend/src/components/Historico.js
-
 import React, {useState, useEffect} from 'react';
 import {toast} from 'react-toastify';
 import ClipLoader from 'react-spinners/ClipLoader';
-import './Historico.css'; // Asegúrate de tener estilos adecuados
+import './Historico.css';
 
 function Historico () {
   const [sorteos, setSorteos] = useState ([]);
@@ -13,42 +11,6 @@ function Historico () {
   const [cargandoResultados, setCargandoResultados] = useState (false);
   const [cargandoActividad, setCargandoActividad] = useState (false);
 
-  // WebSocket
-  useEffect (() => {
-    const socket = new WebSocket ('ws://127.0.0.1:8000/ws/sorteos/');
-
-    socket.onopen = () => {
-      console.log ('Conexión WebSocket establecida');
-    };
-
-    socket.onmessage = e => {
-      const data = JSON.parse (e.data);
-      if (data.type === 'sorteo') {
-        const nuevoSorteo = data.sorteo;
-        setSorteos (prevSorteos => [nuevoSorteo, ...prevSorteos]);
-        toast.info (`Nuevo sorteo realizado: ${nuevoSorteo.nombre}`);
-        // Opcional: Actualizar resultados y actividad si es necesario
-        fetchResultados ();
-        fetchActividad ();
-      }
-    };
-
-    socket.onerror = e => {
-      console.error ('Error en WebSocket:', e);
-      toast.error ('Error en la conexión WebSocket.');
-    };
-
-    socket.onclose = () => {
-      console.log ('WebSocket cerrado');
-    };
-
-    // Cleanup on unmount
-    return () => {
-      socket.close ();
-    };
-  }, []);
-
-  // Fetch Sorteos
   const fetchSorteos = async () => {
     setCargandoSorteos (true);
     try {
@@ -63,7 +25,6 @@ function Historico () {
     }
   };
 
-  // Fetch Resultados
   const fetchResultados = async () => {
     setCargandoResultados (true);
     try {
@@ -80,7 +41,6 @@ function Historico () {
     }
   };
 
-  // Fetch Actividad
   const fetchActividad = async () => {
     setCargandoActividad (true);
     try {
@@ -106,8 +66,6 @@ function Historico () {
   return (
     <div className="historico-container">
       <h2>Histórico de Sorteos y Actividades</h2>
-
-      {/* Lista de Sorteos */}
       <div className="historico-section">
         <h3>Lista de Sorteos</h3>
         {cargandoSorteos
@@ -133,10 +91,7 @@ function Historico () {
               </tbody>
             </table>}
       </div>
-
       <hr />
-
-      {/* Lista de Resultados */}
       <div className="historico-section">
         <h3>Resultados de Sorteos</h3>
         {cargandoResultados
@@ -168,10 +123,7 @@ function Historico () {
               </tbody>
             </table>}
       </div>
-
       <hr />
-
-      {/* Lista de Actividad */}
       <div className="historico-section">
         <h3>Registro de Actividades</h3>
         {cargandoActividad
