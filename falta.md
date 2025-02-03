@@ -6,3 +6,4 @@
 
 No hay suficientes usuarios para todos los items.
 - que cada vez que se realiza un sorteo, que se actualice el Histórico de Sorteos y la actividad
+- manejo de errores, que sea más espécífico cuando se realiza un sorteo

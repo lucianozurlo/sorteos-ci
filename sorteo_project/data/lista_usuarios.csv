@@ -1,0 +1,41 @@
+ID,Nombre,Apellido,Area,Dominio,Cargo,Email,Localidad,Provincia
+1,Juan,Pérez,Marketing,Negocio,Gerente,juan.perez1@example.com,La Plata,Buenos Aires
+2,María,González,Finanzas,Digital,Analista,maria.gonzalez2@example.com,Mar del Plata,Buenos Aires
+3,Carlos,Rodríguez,Recursos Humanos,Cultural,Coordinador,carlos.rodriguez3@example.com,Córdoba,Córdoba
+4,Ana,López,Comunicación,Organizacional,Directora,ana.lopez4@example.com,Rosario,Santa Fe
+5,Roberto,Morales,Operaciones,Negocio,Supervisor,roberto.morales5@example.com,La Plata,Buenos Aires
+6,Lucía,Sánchez,Innovación,Digital,Analista,lucia.sanchez6@example.com,Mar del Plata,Buenos Aires
+7,Andrés,Fernández,Logística,Cultural,Encargado,andres.fernandez7@example.com,Córdoba,Córdoba
+8,Elena,Ramírez,Marketing,Organizacional,Ejecutiva,elena.ramirez8@example.com,Rosario,Santa Fe
+9,Diego,Vargas,Finanzas,Negocio,Analista,diego.vargas9@example.com,La Plata,Buenos Aires
+10,Claudia,Castro,Recursos Humanos,Digital,Coordinadora,claudia.castro10@example.com,Mar del Plata,Buenos Aires
+11,Fernando,Suárez,Comunicación,Cultural,Especialista,fernando.suarez11@example.com,Córdoba,Córdoba
+12,Sofía,Rojas,Operaciones,Organizacional,Gerente,sofia.rojas12@example.com,Rosario,Santa Fe
+13,Martín,Molina,Innovación,Negocio,Analista,martin.molina13@example.com,La Plata,Buenos Aires
+14,Valeria,Ortiz,Logística,Digital,Coordinadora,valeria.ortiz14@example.com,Mar del Plata,Buenos Aires
+15,Esteban,Jiménez,Marketing,Cultural,Ejecutivo,esteban.jimenez15@example.com,Córdoba,Córdoba
+16,Carla,Reyes,Finanzas,Organizacional,Gerente,carla.reyes16@example.com,Rosario,Santa Fe
+17,Óscar,Navarro,Recursos Humanos,Negocio,Analista,oscar.navarro17@example.com,La Plata,Buenos Aires
+18,Patricia,Fernández,Comunicación,Digital,Coordinadora,patricia.fernandez18@example.com,Mar del Plata,Buenos Aires
+19,Ricardo,Silva,Operaciones,Cultural,Supervisor,ricardo.silva19@example.com,Córdoba,Córdoba
+20,Verónica,Rodríguez,Innovación,Organizacional,Directora,veronica.rodriguez20@example.com,Rosario,Santa Fe
+21,Diego,Martínez,Marketing,Negocio,Ejecutivo,diego.martinez21@example.com,La Plata,Buenos Aires
+22,Laura,Gómez,Finanzas,Digital,Analista,laura.gomez22@example.com,Mar del Plata,Buenos Aires
+23,Andrés,Domínguez,Recursos Humanos,Cultural,Coordinador,andres.dominguez23@example.com,Córdoba,Córdoba
+24,Isabel,Herrera,Comunicación,Organizacional,Directora,isabel.herrera24@example.com,Rosario,Santa Fe
+25,Alberto,Romero,Operaciones,Negocio,Supervisor,alberto.romero25@example.com,La Plata,Buenos Aires
+26,Daniela,Castillo,Innovación,Digital,Analista,daniela.castillo26@example.com,Mar del Plata,Buenos Aires
+27,Estela,Soto,Logística,Cultural,Encargada,estela.soto27@example.com,Córdoba,Córdoba
+28,Jorge,Vega,Marketing,Organizacional,Gerente,jorge.vega28@example.com,Rosario,Santa Fe
+29,Silvia,Paredes,Finanzas,Negocio,Analista,silvia.paredes29@example.com,La Plata,Buenos Aires
+30,Raúl,Ramos,Recursos Humanos,Digital,Coordinador,raul.ramos30@example.com,Mar del Plata,Buenos Aires
+31,Natalia,Acosta,Comunicación,Cultural,Especialista,natalia.acosta31@example.com,Córdoba,Córdoba
+32,Guillermo,Navarro,Operaciones,Organizacional,Gerente,guillermo.navarro32@example.com,Rosario,Santa Fe
+33,Claudia,Silva,Innovación,Negocio,Analista,claudia.silva33@example.com,La Plata,Buenos Aires
+34,Victor,Mejía,Logística,Digital,Coordinador,victor.mejia34@example.com,Mar del Plata,Buenos Aires
+35,Rosa,Valdez,Marketing,Cultural,Ejecutiva,rosa.valdez35@example.com,Córdoba,Córdoba
+36,Martina,Pineda,Finanzas,Organizacional,Directora,martina.pineda36@example.com,Rosario,Santa Fe
+37,Tomás,Rodríguez,Recursos Humanos,Negocio,Analista,tomas.rodriguez37@example.com,La Plata,Buenos Aires
+38,Brenda,Fuentes,Comunicación,Digital,Coordinadora,brenda.fuentes38@example.com,Mar del Plata,Buenos Aires
+39,Fabián,Delgado,Operaciones,Cultural,Supervisor,fabian.delgado39@example.com,Córdoba,Córdoba
+40,Alejandra,Morales,Innovación,Organizacional,Directora,alejandra.morales40@example.com,Rosario,Santa Fe

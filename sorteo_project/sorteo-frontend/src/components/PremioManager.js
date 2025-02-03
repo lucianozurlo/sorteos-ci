@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import ClipLoader from 'react-spinners/ClipLoader';
 import './PremioManager.css';
+import { API_BASE_URL } from '../config';
 
 function PremioManager() {
   const [premios, setPremios] = useState([]);
@@ -17,7 +18,7 @@ function PremioManager() {
   const fetchPremios = async () => {
     setCargando(true);
     try {
-      const response = await fetch('/api/premios/');
+      const response = await fetch(`${API_BASE_URL}/api/premios/`);
       if (!response.ok) {
         throw new Error('Error al obtener los premios');
       }
@@ -45,7 +46,7 @@ function PremioManager() {
       return;
     }
     try {
-      const response = await fetch('/api/premios/', {
+      const response = await fetch(`${API_BASE_URL}/api/premios/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nombre: nuevoNombre, stock: nuevoStock }),
@@ -88,7 +89,7 @@ function PremioManager() {
       return;
     }
     try {
-      const response = await fetch(`/api/premios/${editPremioId}/`, {
+      const response = await fetch(`${API_BASE_URL}/api/premios/${editPremioId}/`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nombre: editNombre, stock: editStock }),
@@ -113,7 +114,7 @@ function PremioManager() {
       return;
     }
     try {
-      const response = await fetch(`/api/premios/${id}/`, {
+      const response = await fetch(`${API_BASE_URL}/api/premios/${id}/`, {
         method: 'DELETE',
       });
       if (response.status === 204) {

@@ -1,9 +1,11 @@
-import csv
+# sorteo_app/management/commands/cargar_csv.py
+
 from django.core.management.base import BaseCommand, CommandError
-from sorteo_app.models import Usuario, RegistroActividad
+import csv
+from sorteo_app.models import Participante, RegistroActividad
 
 class Command(BaseCommand):
-    help = 'Carga datos de usuarios desde CSV y excluye IDs en la lista negra.'
+    help = 'Carga datos de participantes desde CSV y excluye IDs en la lista negra.'
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -21,7 +23,7 @@ class Command(BaseCommand):
         ruta_usuarios = options['usuarios'] or 'usuarios.csv'
         ruta_lista_negra = options['lista_negra'] or 'lista_negra.csv'
 
-        # 1. Leer IDs de la lista negra
+        # Leer IDs de la lista negra
         blacklist_ids = set()
         try:
             with open(ruta_lista_negra, 'r', encoding='utf-8') as f_black:
@@ -31,7 +33,7 @@ class Command(BaseCommand):
         except FileNotFoundError:
             raise CommandError(f"No se encontró el archivo de lista negra: {ruta_lista_negra}")
 
-        # 2. Leer y crear/actualizar usuarios (excluyendo los que estén en la lista negra)
+        # Leer y crear/actualizar participantes (excluyendo los que estén en la lista negra)
         try:
             with open(ruta_usuarios, 'r', encoding='utf-8') as f_users:
                 reader = csv.DictReader(f_users)
@@ -39,10 +41,9 @@ class Command(BaseCommand):
                 for row in reader:
                     user_id = int(row['ID'])
                     if user_id in blacklist_ids:
-                        # Ignorar usuario en lista negra
                         continue
 
-                    Usuario.objects.update_or_create(
+                    Participante.objects.update_or_create(
                         id=user_id,
                         defaults={
                             'nombre': row['Nombre'],
@@ -55,12 +56,11 @@ class Command(BaseCommand):
                     contador += 1
 
                 self.stdout.write(self.style.SUCCESS(
-                    f'Se cargaron/actualizaron {contador} usuarios.'
+                    f'Se cargaron/actualizaron {contador} participantes.'
                 ))
 
-                # Registrar evento
                 RegistroActividad.objects.create(
-                    evento=f"Carga de usuarios desde {ruta_usuarios}; excluidos {len(blacklist_ids)} IDs de lista negra."
+                    evento=f"Carga de participantes desde {ruta_usuarios}; excluidos {len(blacklist_ids)} IDs de lista negra."
                 )
         except FileNotFoundError:
             raise CommandError(f"No se encontró el archivo de usuarios: {ruta_usuarios}")

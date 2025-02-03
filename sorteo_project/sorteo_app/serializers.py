@@ -1,18 +1,20 @@
-from rest_framework import serializers
-from django.contrib.auth.models import User
-from .models import RegistroActividad, Sorteo, SorteoPremio, ResultadoSorteo, Premio, UserProfile
+# sorteo_app/serializers.py
 
+from rest_framework import serializers
+# Importar los modelos usando importación relativa
+from .models import Participante, RegistroActividad, Sorteo, SorteoPremio, ResultadoSorteo, Premio, UserProfile
+
+# Serializer para UserProfile (si se usa en algún otro lado)
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
         fields = ['localidad', 'provincia']
 
-class UserSerializer(serializers.ModelSerializer):
-    profile = UserProfileSerializer()
-
+# Serializer para Participante (en lugar de User)
+class ParticipanteSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'profile']
+        model = Participante
+        fields = ['id', 'nombre', 'apellido', 'area', 'dominio', 'cargo', 'email', 'localidad', 'provincia']
 
 class RegistroActividadSerializer(serializers.ModelSerializer):
     class Meta:
@@ -26,43 +28,43 @@ class PremioSerializer(serializers.ModelSerializer):
 
 class SorteoPremioSerializer(serializers.ModelSerializer):
     premio = PremioSerializer(read_only=True)
-    premio_id = serializers.PrimaryKeyRelatedField(
-        queryset=Premio.objects.all(),
-        source='premio',
-        write_only=True
-    )
+    premio_id = serializers.PrimaryKeyRelatedField(queryset=Premio.objects.all(), source='premio', write_only=True)
 
     class Meta:
         model = SorteoPremio
         fields = ['premio', 'premio_id', 'orden_item', 'cantidad']
 
+class SorteoSimpleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sorteo
+        fields = ['id', 'nombre']
+
 class SorteoSerializer(serializers.ModelSerializer):
-    # Usamos el nombre "premios" para que coincida con el payload del frontend.
-    premios = SorteoPremioSerializer(many=True)
+    premios = SorteoPremioSerializer(many=True, source='sorteopremios')
 
     class Meta:
         model = Sorteo
         fields = ['id', 'nombre', 'descripcion', 'fecha_hora', 'premios']
 
+    def validate_nombre(self, value):
+        if not value.strip():
+            return "Sorteo sin nombre"
+        return value
+
     def create(self, validated_data):
-        premios_data = validated_data.pop('premios')
+        premios_data = validated_data.pop('sorteopremios')
         sorteo = Sorteo.objects.create(**validated_data)
         for premio_data in premios_data:
             premio = premio_data['premio']
             orden_item = premio_data['orden_item']
             cantidad = premio_data['cantidad']
 
-            # Verificar stock
             if premio.stock < cantidad:
-                raise serializers.ValidationError(
-                    f'No hay suficiente stock para el premio {premio.nombre}'
-                )
+                raise serializers.ValidationError(f'No hay suficiente stock para el premio {premio.nombre}')
 
-            # Reducir stock
             premio.stock -= cantidad
             premio.save()
 
-            # Crear la relación
             SorteoPremio.objects.create(
                 sorteo=sorteo,
                 premio=premio,
@@ -72,9 +74,17 @@ class SorteoSerializer(serializers.ModelSerializer):
         return sorteo
 
 class ResultadoSorteoSerializer(serializers.ModelSerializer):
-    usuario = UserSerializer(read_only=True)
+    participante = ParticipanteSerializer(read_only=True)
     premio = PremioSerializer(read_only=True)
+    # Usamos un SerializerMethodField para el sorteo y devolver un dict con la info deseada.
+    sorteo = serializers.SerializerMethodField()
 
     class Meta:
         model = ResultadoSorteo
-        fields = ['id', 'sorteo', 'usuario', 'premio', 'fecha']
+        fields = ['id', 'sorteo', 'participante', 'premio', 'fecha']
+
+    def get_sorteo(self, obj):
+        # Devuelve un diccionario con el id y nombre del sorteo
+        if obj.sorteo:
+            return {'id': obj.sorteo.id, 'nombre': obj.sorteo.nombre}
+        return None

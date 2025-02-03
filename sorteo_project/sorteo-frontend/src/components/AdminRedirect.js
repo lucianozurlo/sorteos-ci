@@ -1,12 +1,11 @@
 // sorteo-frontend/src/components/AdminRedirect.js
 
-import React, {useEffect} from 'react';
+// Ya no importamos React, ya que no se utiliza.
+// import React from 'react';
 
 function AdminRedirect () {
-  useEffect (() => {
-    window.location.href = 'http://localhost:8000/admin/';
-  }, []);
-
+  // Redirige al panel de administración de Django
+  window.location.href = 'http://localhost:8000/admin/';
   return null;
 }
 

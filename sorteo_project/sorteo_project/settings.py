@@ -49,9 +49,6 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-# Configurar Channels
-ASGI_APPLICATION = 'sorteo_project.asgi.application'
-
 # Configurar CORS
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
