@@ -16,9 +16,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-cm6t-6dcw07k0z1(fbbk$8we7y1sa-y2gxeim-mi^)to)jdwv8"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['tu-dominio-railway.up.railway.app', 'localhost']
 
 # Application definition
 INSTALLED_APPS = [
@@ -51,7 +51,8 @@ MIDDLEWARE = [
 
 # Configurar CORS
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+  "http://localhost:3000",
+  "https://sorteos-ci.netlify.app",
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 
