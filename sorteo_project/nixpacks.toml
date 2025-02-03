@@ -1,2 +1,3 @@
 [build]
-command = "python3 -m pip install -r requirements.txt"
+image = "python:3.10-slim"
+command = "python -m pip install -r requirements.txt"
